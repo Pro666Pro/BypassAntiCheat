@@ -23,7 +23,7 @@ local function checkAndDestroyAntiMobileExploits()
         antiMobileExploits.AntiMobileExploits:Destroy()
         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Bypassed",Text = "anti-cheat bypassed!" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":)"})
     else
-        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "anti-cheat not bypassed due to unknown error." ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":("})
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "anti-cheat arleady bypassed!" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":)"})
     end
 end
 
