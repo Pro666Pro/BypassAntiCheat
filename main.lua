@@ -45,3 +45,4 @@ if game:GetService("ReplicatedStorage"):FindFirstChild("GRAB") then
 game:GetService("ReplicatedStorage").GRAB:Destroy()
 end
 checkAndDestroyAntiMobileExploits()
+end
