@@ -4,8 +4,6 @@ if identifyexecutor() and identifyexecutor() == "RobloxStudio.exe" then
     end
 end
 
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Anti-Patch Loaded!" ,Duration = 2, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":)"})
-
 local Players = game:GetService("Players")
 local StarterPlayer = game:GetService("StarterPlayer")
 
@@ -15,14 +13,13 @@ local function checkAndDestroyAntiMobileExploits()
 
     if antiMobileExploits and antiMobileExploits:FindFirstChild("AntiMobileExploits") then
         antiMobileExploits.AntiMobileExploits:Destroy()
-        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Bypassed",Text = "anti-cheat bypassed!" ,Duration = 2, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":)"})
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Success",Text = "Anti-cheat bypassed!" ,Duration = 3, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
     else
-        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "anti-cheat arleady bypassed!" ,Duration = 2, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":)"})
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Anti-cheat arleady bypassed!" ,Duration = 3, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
     end
 end
 
 if hookmetamethod then
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "hookmetamethod success." ,Duration = 2, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":)"})
 local Namecall
 Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    if getnamecallmethod() == "FireServer" and tostring(self) == "Ban" then
@@ -41,7 +38,6 @@ end)
 
 checkAndDestroyAntiMobileExploits()
 else
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "hookmetamethod failed. Using alternative way..." ,Duration = 2, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = ":)"})
 if game:GetService("ReplicatedStorage"):FindFirstChild("Ban") then
 game:GetService("ReplicatedStorage").Ban:Destroy()
 end
