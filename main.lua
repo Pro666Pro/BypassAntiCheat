@@ -54,20 +54,18 @@ end
 elseif game.PlaceId == 121040292301582 then
 
 if hookmetamethod and getnamecallmethod then
-local Namecall
+local Namecall 
 Namecall = hookmetamethod(game, "__namecall", function(self, ...)
-   if getnamecallmethod() == "FireServer" and tostring(self) == "Respawn" then
-       return
-   elseif getnamecallmethod() == "FireServer" and tostring(self) == "Card" then
-       return
-   elseif getnamecallmethod() == "FireServer" and tostring(self) == "BanEvent" then
-       return
-   elseif getnamecallmethod() == "FireServer" and tostring(self) == "HoneycombFinish" then
-       return
-   end
-   return Namecall(self, ...)
+    if getnamecallmethod() == "FireServer" then
+        for _, arg in ipairs({...}) do
+            if typeof(arg) == "string" and string.find(arg:upper(), "BAN") then
+                return
+            end
+        end
+    end
+    return Namecall(self, ...)
 end)
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod (100% success rate)" ,Duration = 5, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod (100% success rate)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("BanEvent") then
 game:GetService("ReplicatedStorage").Events.BanEvent:Destroy()
@@ -81,7 +79,7 @@ end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("HoneycombFinish") then
 game:GetService("ReplicatedStorage").Events.HoneycombFinish:Destroy()
 end
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: destroy (???% success rate)" ,Duration = 5, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: destroy (≈24% success rate)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
     
 else
