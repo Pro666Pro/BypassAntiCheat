@@ -62,19 +62,24 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
        return
    elseif getnamecallmethod() == "FireServer" and tostring(self) == "BanEvent" then
        return
+   elseif getnamecallmethod() == "FireServer" and tostring(self) == "HoneycombFinish" then
+       return
    end
    return Namecall(self, ...)
 end)
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod (100% success rate)" ,Duration = 5, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("BanEvent") then
-game:GetService("ReplicatedStorage").Events.Ban:Destroy()
+game:GetService("ReplicatedStorage").Events.BanEvent:Destroy()
 end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("Card") then
-game:GetService("ReplicatedStorage").Events.WS:Destroy()
+game:GetService("ReplicatedStorage").Events.Card:Destroy()
 end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("Respawn") then
-game:GetService("ReplicatedStorage").Events.AdminGUI:Destroy()
+game:GetService("ReplicatedStorage").Events.Respawn:Destroy()
+end
+if game:GetService("ReplicatedStorage").Events:FindFirstChild("HoneycombFinish") then
+game:GetService("ReplicatedStorage").Events.HoneycombFinish:Destroy()
 end
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: destroy (???% success rate)" ,Duration = 5, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
