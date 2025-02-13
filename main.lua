@@ -80,10 +80,10 @@ if game:GetService("ReplicatedStorage").Events:FindFirstChild("Respawn") then
 game:GetService("ReplicatedStorage").Events.Respawn:Destroy()
 end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("HoneycombFinish") then
-game:GetService("ReplicatedStorage").Events.HoneycombFinish:Destroy()
+game:GetService("ReplicatedStorage").Events.HoneycombFinish.Parent = game.CoreGui
 end
 getgenv().Bypassed = true
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: :Destroy() (100% success rate until patch)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: :Destroy() (???% success rate until patch)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
     
 else
