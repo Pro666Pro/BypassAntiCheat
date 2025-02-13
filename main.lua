@@ -67,38 +67,37 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
 end)
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod & getnamecallmethod (100% success rate, have been tested)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
-local function interceptRemoteEvents()
-    for _, remote in ipairs(game.ReplicatedStorage:GetDescendants()) do
-        if remote.ClassName == "RemoteEvent" then
-            local originalFireServer = remote.FireServer          
-            remote.FireServer = function(self, ...)
-                local args = {...}
-                for _, arg in ipairs(args) do
-                    if typeof(arg) == "string" and string.find(arg:upper(), "BAN") then
-                        return
-                    end
-                end
-                return originalFireServer(self, ...)
-            end
-        end
-    end
+local function StopRemote(Mode)
+mode = mode
+if workspace:FindFirstChild("Moved_Remotes") == nil then
+Instance.new("Folder", workspace).Name = "Moved_Remotes")
 end
-interceptRemoteEvents()
-game.ReplicatedStorage.DescendantAdded:Connect(function(descendant)
-    if descendant.ClassName == "RemoteEvent" then
-        local originalFireServer = descendant.FireServer
-        descendant.FireServer = function(self, ...)
-            local args = {...}
-            for _, arg in ipairs(args) do
-                if typeof(arg) == "string" and string.find(arg:upper(), "BAN") then
-                    return
-                end
-            end
-            return originalFireServer(self, ...)
-        end
-    end
-end)
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: GetDescendants() (≈???% success rate, haven't been tested!)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+task.wait()
+if mode == true then
+            
+for i,v in ipairs(game.ReplicatedStorage.Events:GetChildren()) do
+if v and v:IsA("RemoteEvent") then
+v.Parent == workspace:FindFirstChild("Moved_Remotes")
+repeat
+task.wait()
+until workspace.Moved_Remotes:FindFirstChild(v.Name)
+end
+end
+            
+elseif mode == false then
+            
+for i,v in ipairs(workspace.Moved_Remotes:GetChildren()) do
+if v and v:IsA("RemoteEvent") then
+v.Parent == game.ReplicatedStorage.Events
+repeat
+task.wait()
+until game.ReplicatedStorage.Events:FindFirstChild(v.Name)
+end
+end
+            
+end
+end
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: function & parenting (≈???% success rate, haven't been tested!)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
     
 else
