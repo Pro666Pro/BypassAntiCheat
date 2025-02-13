@@ -68,8 +68,8 @@ end)
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod & getnamecallmethod (100% success rate, have been tested)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
 local function interceptRemoteEvents()
-    for _, remote in ipairs(game:GetDescendants()) do
-        if remote:IsA("RemoteEvent") then
+    for _, remote in ipairs(game.ReplicatedStorage:GetDescendants()) do
+        if remote.ClassName == "RemoteEvent" then
             local originalFireServer = remote.FireServer          
             remote.FireServer = function(self, ...)
                 local args = {...}
@@ -84,8 +84,8 @@ local function interceptRemoteEvents()
     end
 end
 interceptRemoteEvents()
-game.DescendantAdded:Connect(function(descendant)
-    if descendant:IsA("RemoteEvent") then
+game.ReplicatedStorage.DescendantAdded:Connect(function(descendant)
+    if descendant.ClassName == "RemoteEvent" then
         local originalFireServer = descendant.FireServer
         descendant.FireServer = function(self, ...)
             local args = {...}
