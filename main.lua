@@ -70,8 +70,20 @@ end)
 getgenv().Bypassed = true
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod & getnamecallmethod (100% success rate, have been tested)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
-getgenv().Bypassed = false
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat hasn't been bypassed. Your executor doesn't support hookmetamethod and getnamecallmethod." ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+if game:GetService("ReplicatedStorage").Events:FindFirstChild("Card") then
+game:GetService("ReplicatedStorage").Events.Card:Destroy()
+end
+if game:GetService("ReplicatedStorage").Events:FindFirstChild("BanEvent") then
+game:GetService("ReplicatedStorage").Events.BanEvent:Destroy()
+end
+if game:GetService("ReplicatedStorage").Events:FindFirstChild("Respawn") then
+game:GetService("ReplicatedStorage").Events.Respawn:Destroy()
+end
+if game:GetService("ReplicatedStorage").Events:FindFirstChild("HoneycombFinish") then
+game:GetService("ReplicatedStorage").Events.HoneycombFinish:Destroy()
+end
+getgenv().Bypassed = true
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: :Destroy() (100% success rate until patch)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
     
 else
