@@ -82,7 +82,7 @@ if mode == true then
 getgenv().InMoving = true
 for i,v in ipairs(game.ReplicatedStorage.Events:GetChildren()) do
 if v and v:IsA("RemoteEvent") then
-v.Parent == workspace:FindFirstChild("Moved_Remotes")
+v.Parent = workspace:FindFirstChild("Moved_Remotes")
 repeat
 task.wait()
 until workspace.Moved_Remotes:FindFirstChild(v.Name)
@@ -93,7 +93,7 @@ elseif mode == false then
 getgenv().InMoving = true
 for i,v in ipairs(workspace.Moved_Remotes:GetChildren()) do
 if v and v:IsA("RemoteEvent") then
-v.Parent == game.ReplicatedStorage.Events
+v.Parent = game.ReplicatedStorage.Events
 repeat
 task.wait()
 until game.ReplicatedStorage.Events:FindFirstChild(v.Name)
