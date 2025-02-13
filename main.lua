@@ -69,13 +69,13 @@ game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub."
 else
 getgenv().InMoving = false
 if workspace:FindFirstChild("Moved_Remotes") == nil then
-Instance.new("Folder", workspace).Name = "Moved_Remotes")
+Instance.new("Folder", workspace).Name = "Moved_Remotes"
 end
 local function StopRemote(Mode)
 mode = mode
 if getgenv().InMoving == true then return warn("You were about to get banned but my script saved you! Dont spam click!!!") end
 if workspace:FindFirstChild("Moved_Remotes") == nil then
-Instance.new("Folder", workspace).Name = "Moved_Remotes")
+Instance.new("Folder", workspace).Name = "Moved_Remotes"
 end
 task.wait()
 if mode == true then
