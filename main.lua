@@ -67,14 +67,19 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
 end)
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod & getnamecallmethod (100% success rate, have been tested)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
+getgenv().InMoving = false
+if workspace:FindFirstChild("Moved_Remotes") == nil then
+Instance.new("Folder", workspace).Name = "Moved_Remotes")
+end
 local function StopRemote(Mode)
 mode = mode
+if getgenv().InMoving == true then return warn("You were about to get banned but my script saved you! Dont spam click!!!") end
 if workspace:FindFirstChild("Moved_Remotes") == nil then
 Instance.new("Folder", workspace).Name = "Moved_Remotes")
 end
 task.wait()
 if mode == true then
-            
+getgenv().InMoving = true
 for i,v in ipairs(game.ReplicatedStorage.Events:GetChildren()) do
 if v and v:IsA("RemoteEvent") then
 v.Parent == workspace:FindFirstChild("Moved_Remotes")
@@ -83,9 +88,9 @@ task.wait()
 until workspace.Moved_Remotes:FindFirstChild(v.Name)
 end
 end
-            
+getgenv().InMoving = false 
 elseif mode == false then
-            
+getgenv().InMoving = true
 for i,v in ipairs(workspace.Moved_Remotes:GetChildren()) do
 if v and v:IsA("RemoteEvent") then
 v.Parent == game.ReplicatedStorage.Events
@@ -94,7 +99,7 @@ task.wait()
 until game.ReplicatedStorage.Events:FindFirstChild(v.Name)
 end
 end
-            
+getgenv().InMoving = false 
 end
 end
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: function & parenting (≈???% success rate, haven't been tested!)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
