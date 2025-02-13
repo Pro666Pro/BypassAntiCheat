@@ -65,21 +65,40 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
     end
     return Namecall(self, ...)
 end)
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod (100% success rate)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod & getnamecallmethod (100% success rate)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("BanEvent") then
-game:GetService("ReplicatedStorage").Events.BanEvent:Destroy()
+local function interceptRemoteEvents()
+    for _, remote in ipairs(game:GetDescendants()) do
+        if remote:IsA("RemoteEvent") then
+            local originalFireServer = remote.FireServer          
+            remote.FireServer = function(self, ...)
+                local args = {...}
+                for _, arg in ipairs(args) do
+                    if typeof(arg) == "string" and string.find(arg:upper(), "BAN") then
+                        return
+                    end
+                end
+                return originalFireServer(self, ...)
+            end
+        end
+    end
 end
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("Card") then
-game:GetService("ReplicatedStorage").Events.Card:Destroy()
-end
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("Respawn") then
-game:GetService("ReplicatedStorage").Events.Respawn:Destroy()
-end
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("HoneycombFinish") then
-game:GetService("ReplicatedStorage").Events.HoneycombFinish:Destroy()
-end
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: destroy (≈24% success rate)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+interceptRemoteEvents()
+game.DescendantAdded:Connect(function(descendant)
+    if descendant:IsA("RemoteEvent") then
+        local originalFireServer = descendant.FireServer
+        descendant.FireServer = function(self, ...)
+            local args = {...}
+            for _, arg in ipairs(args) do
+                if typeof(arg) == "string" and string.find(arg:upper(), "BAN") then
+                    return
+                end
+            end
+            return originalFireServer(self, ...)
+        end
+    end
+end)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: GetDescendants() (≈???% success rate)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
     
 else
