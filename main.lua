@@ -53,7 +53,7 @@ end
 
 elseif game.PlaceId == 121040292301582 then
 
-getgenv.Bypassed = false
+getgenv().Bypassed = false
     
 if hookmetamethod and getnamecallmethod then
 local Namecall 
@@ -67,10 +67,10 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
     end
     return Namecall(self, ...)
 end)
-getgenv.Bypassed = true
+getgenv().Bypassed = true
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod & getnamecallmethod (100% success rate, have been tested)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 else
-getgenv.Bypassed = false
+getgenv().Bypassed = false
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat hasn't been bypassed. Your executor doesn't support hookmetamethod and getnamecallmethod." ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
     
