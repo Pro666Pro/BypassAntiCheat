@@ -79,11 +79,8 @@ end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("Respawn") then
 game:GetService("ReplicatedStorage").Events.Respawn:Destroy()
 end
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("HoneycombFinish") then
-game:GetService("ReplicatedStorage").Events.HoneycombFinish.Name = "hf"
-end
 getgenv().Bypassed = true
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: :Destroy() (With this method some things in-game may break, like you won't be able to respawn, honeycomb may get bugged & etc.)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: :Destroy() (With this method some things in-game may break, like you won't be able to respawn, honeycomb may get bugged & etc. plus im not sure if its works)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
 end
     
 else
