@@ -102,6 +102,7 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    end
    return Namecall(self, ...)
 end)
+print("Method hookmetamethod")
 checkAndDestroyAntiMobileExploits()
 else
 if game:GetService("ReplicatedStorage"):FindFirstChild("Ban") then
@@ -119,6 +120,7 @@ end
 if game:GetService("ReplicatedStorage"):FindFirstChild("SpecialGloveAccess") then
 game:GetService("ReplicatedStorage").SpecialGloveAccess:Destroy()
 end
+print("Method destroy. Idk if works")
 checkAndDestroyAntiMobileExploits()
 end
     
