@@ -7,8 +7,6 @@ end
 local Players = game:GetService("Players")
 local StarterPlayer = game:GetService("StarterPlayer")
 
-game.ReplicatedFirst.Client.GrabLocal:Destroy()
-
 local function checkAndDestroyAntiMobileExploits()
     local player = Players.LocalPlayer
     local antiMobileExploits = StarterPlayer.StarterPlayerScripts:FindFirstChild("ClientAnticheat")
@@ -105,6 +103,7 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    return Namecall(self, ...)
 end)
 print("Method hookmetamethod")
+game.ReplicatedFirst.Client.GrabLocal:Destroy()
 checkAndDestroyAntiMobileExploits()
 else
 if game:GetService("ReplicatedStorage"):FindFirstChild("Ban") then
@@ -122,6 +121,7 @@ end
 if game:GetService("ReplicatedStorage"):FindFirstChild("SpecialGloveAccess") then
 game:GetService("ReplicatedStorage").SpecialGloveAccess:Destroy()
 end
+game.ReplicatedFirst.Client.GrabLocal:Destroy()
 print("Method destroy. Idk if works")
 checkAndDestroyAntiMobileExploits()
 end
