@@ -7,6 +7,8 @@ end
 local Players = game:GetService("Players")
 local StarterPlayer = game:GetService("StarterPlayer")
 
+game.ReplicatedFirst.Client.GrabLocal:Destroy()
+
 local function checkAndDestroyAntiMobileExploits()
     local player = Players.LocalPlayer
     local antiMobileExploits = StarterPlayer.StarterPlayerScripts:FindFirstChild("ClientAnticheat")
