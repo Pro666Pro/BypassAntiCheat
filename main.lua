@@ -103,7 +103,9 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    return Namecall(self, ...)
 end)
 print("Method hookmetamethod")
+if game.ReplicatedFirst.Client:FindFirstChild("GrabLocal") then
 game.ReplicatedFirst.Client.GrabLocal:Destroy()
+end
 checkAndDestroyAntiMobileExploits()
 else
 if game:GetService("ReplicatedStorage"):FindFirstChild("Ban") then
@@ -121,7 +123,10 @@ end
 if game:GetService("ReplicatedStorage"):FindFirstChild("SpecialGloveAccess") then
 game:GetService("ReplicatedStorage").SpecialGloveAccess:Destroy()
 end
+if game.ReplicatedFirst.Client:FindFirstChild("GrabLocal") then
 game.ReplicatedFirst.Client.GrabLocal:Destroy()
+end
+
 print("Method destroy. Idk if works")
 checkAndDestroyAntiMobileExploits()
 end
