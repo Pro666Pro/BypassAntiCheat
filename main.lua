@@ -1,9 +1,3 @@
-if identifyexecutor() and identifyexecutor() == "RobloxStudio.exe" then
-    while true do
-    game:Shutdown()
-    end
-end
-
 local Players = game:GetService("Players")
 local StarterPlayer = game:GetService("StarterPlayer")
 
