@@ -40,7 +40,7 @@ end
 
 
 if game.PlaceId == 9431156611 then -- Slap Royale
-if hookmetamethod or hookmetamethod() and getnamecallmethod or getnamecallmethod() then
+if hookmetamethod and getnamecallmethod then
 local Namecall
 Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    if getnamecallmethod() == "FireServer" and tostring(self) == "Ban" then
@@ -92,7 +92,7 @@ BypassMobileClientAntiCheat()
 
 
 elseif game.PlaceId == 11520107397 or game.PlaceId == 9015014224 or game.PlaceId == 6403373529 or game.PlaceId == 124596094333302 then
-if hookmetamethod or hookmetamethod() and getnamecallmethod or getnamecallmethod() then
+if hookmetamethod and getnamecallmethod then
 local Namecall
 Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    if getnamecallmethod() == "FireServer" and tostring(self) == "Ban" then
