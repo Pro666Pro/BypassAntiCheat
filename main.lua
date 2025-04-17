@@ -1,20 +1,46 @@
-local Players = game:GetService("Players")
-local StarterPlayer = game:GetService("StarterPlayer")
+local RequireService = cloneref or function(clone) return clone end
+local BlockInstance = function(ez) ez.Name = "BlockedInstance_"..math.random(0,500000).."" ez.Parent = RequireService(game:GetService("LogService")) ez:Destroy() end
 
-local function checkAndDestroyAntiMobileExploits()
-    local player = Players.LocalPlayer
-    local antiMobileExploits = StarterPlayer.StarterPlayerScripts:FindFirstChild("ClientAnticheat")
+local game = game or Ugc
+local Players = RequireService(game:GetService("Players"))
+local Player = Players.LocalPlayer
+local PlayerScripts = Player:WaitForChild("PlayerScripts")
+local StarterPlayer = RequireService(game:GetService("StarterPlayer"))
+local StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts")
+local ReplicatedStorage = RequireService(game:GetService("ReplicatedStorage"))
+local NETWORK = ReplicatedStorage:WaitForChild("_NETWORK")
+local ReplicatedFirst = RequireService(game:GetService("ReplicatedFirst"))
 
-    if antiMobileExploits and antiMobileExploits:FindFirstChild("AntiMobileExploits") then
-        antiMobileExploits.AntiMobileExploits:Destroy()
-        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Success",Text = "Anti-cheat bypassed!" ,Duration = 3, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
-    else
-        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Anti-cheat not found or arleady bypassed." ,Duration = 3, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
-    end
+local function DestroyGrabLocalScript()
+if ReplicatedFirst and ReplicatedFirst:FindFirstChild("Client") and ReplicatedFirst.Client:FindFirstChild("GrabLocal") then
+BlockInstance(game.ReplicatedFirst.Client.GrabLocal)
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Bypassed Grab Client!",
+	Text = "Credits: @Nexer1234",
+    Icon = "rbxassetid://125704683916878",
+	Duration = 36000,
+	Button1 = "Alright!"
+})
 end
-if game.PlaceId == 9431156611 then
-    
-if hookmetamethod and getnamecallmethod then
+end
+
+local function BypassMobileClientAntiCheat()
+if StarterPlayerScripts and StarterPlayerScripts:FindFirstChild("ClientAnticheat") and StarterPlayerScripts.ClientAnticheat:FindFirstChild("AntiMobileExploits") then
+BlockInstance(StarterPlayerScripts.ClientAnticheat.AntiMobileExploits)
+BlockInstance(StarterPlayerScripts.ClientAnticheat)
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Bypassed Mobile Client Anti-Cheat!",
+	Text = "Credits: @Nexer1234",
+    Icon = "rbxassetid://125704683916878",
+	Duration = 36000,
+	Button1 = "Alright!"
+})
+end
+end
+
+
+if game.PlaceId == 9431156611 then -- Slap Royale
+if hookmetamethod or hookmetamethod() and getnamecallmethod or getnamecallmethod() then
 local Namecall
 Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    if getnamecallmethod() == "FireServer" and tostring(self) == "Ban" then
@@ -28,59 +54,45 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    end
    return Namecall(self, ...)
 end)
-checkAndDestroyAntiMobileExploits()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Bypassed Ban Remotes!",
+	Text = "{ Method: Hookmetamethod, Total Blocked: 4/4 } Credits: @Nexer1234",
+    Icon = "rbxassetid://125704683916878",
+	Duration = 36000,
+	Button1 = "Alright!"
+})
 else
+local AmountOfBlockedRemotes = 0
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("Ban") then
-game:GetService("ReplicatedStorage").Events.Ban:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").Events.Ban)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("WS") then
-game:GetService("ReplicatedStorage").Events.WS:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").Events.WS)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("AdminGUI") then
-game:GetService("ReplicatedStorage").Events.AdminGUI:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").Events.AdminGUI)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
 if game:GetService("ReplicatedStorage").Events:FindFirstChild("WS2") then
-game:GetService("ReplicatedStorage").Events["WS2"]:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").Events["WS2"])
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
-checkAndDestroyAntiMobileExploits()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Bypassed Ban Remotes!",
+	Text = "{ Method: Block, Total Blocked: "..AmountOfBlockedRemotes.."/4 } Credits: @Nexer1234",
+    Icon = "rbxassetid://125704683916878",
+	Duration = 36000,
+	Button1 = "Alright!"
+})
 end
+DestroyGrabLocalScript()
+BypassMobileClientAntiCheat()
 
-elseif game.PlaceId == 121040292301582 then
 
-getgenv().Bypassed = false
-getgenv().Destroyed = false
-if hookmetamethod and getnamecallmethod then
-local Namecall 
-Namecall = hookmetamethod(game, "__namecall", function(self, ...)
-    if getnamecallmethod() == "FireServer" then
-        for _, arg in ipairs({...}) do
-            if typeof(arg) == "string" and string.find(arg:upper(), "BAN") then
-                return
-            end
-        end
-    end
-    return Namecall(self, ...)
-end)
-getgenv().Bypassed = true
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: hookmetamethod & getnamecallmethod (100% success rate, have been tested)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
-else
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("Card") then
-game:GetService("ReplicatedStorage").Events.Card:Destroy()
-end
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("BanEvent") then
-game:GetService("ReplicatedStorage").Events.BanEvent:Destroy()
-end
-if game:GetService("ReplicatedStorage").Events:FindFirstChild("Respawn") then
-game:GetService("ReplicatedStorage").Events.Respawn:Destroy()
-end
-getgenv().Bypassed = true
-getgenv().Destroyed = true
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "0ct0pus Hub.",Text = "Anti-cheat has been bypassed. Method: :Destroy() (With this method some things in-game may break, like you won't be able to respawn, honeycomb may get bugged & etc. plus im not sure if its works)" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150"})
-end
-    
-else
-    
-if hookmetamethod and getnamecallmethod then
+elseif game.PlaceId == 11520107397 or game.PlaceId == 9015014224 or game.PlaceId == 6403373529 or game.PlaceId == 124596094333302 then
+if hookmetamethod or hookmetamethod() and getnamecallmethod or getnamecallmethod() then
 local Namecall
 Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    if getnamecallmethod() == "FireServer" and tostring(self) == "Ban" then
@@ -96,31 +108,43 @@ Namecall = hookmetamethod(game, "__namecall", function(self, ...)
    end
    return Namecall(self, ...)
 end)
-if game.ReplicatedFirst:FindFirstChild("Client") and game.ReplicatedFirst.Client:FindFirstChild("GrabLocal") then
-game.ReplicatedFirst.Client.GrabLocal:Destroy()
-end
-checkAndDestroyAntiMobileExploits()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Bypassed Ban Remotes!",
+	Text = "{ Method: Hookmetamethod, Total Blocked: 5/5 } Credits: @Nexer1234",
+    Icon = "rbxassetid://125704683916878",
+	Duration = 36000,
+	Button1 = "Alright!"
+})
 else
+local AmountOfBlockedRemotes = 0
 if game:GetService("ReplicatedStorage"):FindFirstChild("Ban") then
-game:GetService("ReplicatedStorage").Ban:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").Ban)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
 if game:GetService("ReplicatedStorage"):FindFirstChild("WalkSpeedChanged") then
-game:GetService("ReplicatedStorage").WalkSpeedChanged:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").WalkSpeedChanged)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
 if game:GetService("ReplicatedStorage"):FindFirstChild("AdminGUI") then
-game:GetService("ReplicatedStorage").AdminGUI:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").AdminGUI)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
 if game:GetService("ReplicatedStorage"):FindFirstChild("GRAB") then
-game:GetService("ReplicatedStorage").GRAB:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").GRAB)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
 if game:GetService("ReplicatedStorage"):FindFirstChild("SpecialGloveAccess") then
-game:GetService("ReplicatedStorage").SpecialGloveAccess:Destroy()
+BlockInstance(game:GetService("ReplicatedStorage").SpecialGloveAccess)
+AmountOfBlockedRemotes = AmountOfBlockedRemotes + 1
 end
-if game.ReplicatedFirst:FindFirstChild("Client") and game.ReplicatedFirst.Client:FindFirstChild("GrabLocal") then
-game.ReplicatedFirst.Client.GrabLocal:Destroy()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "Bypassed Ban Remotes!",
+	Text = "{ Method: Block, Total Blocked: "..AmountOfBlockedRemotes.."/5 } Credits: @Nexer1234",
+    Icon = "rbxassetid://125704683916878",
+	Duration = 36000,
+	Button1 = "Alright!"
+})
 end
-
-checkAndDestroyAntiMobileExploits()
-end
-    
+DestroyGrabLocalScript()
+BypassMobileClientAntiCheat()
 end
