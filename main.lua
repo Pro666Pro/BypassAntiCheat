@@ -10,7 +10,6 @@ local PlayerScripts = Player:WaitForChild("PlayerScripts")
 local StarterPlayer = RequireService(game:GetService("StarterPlayer"))
 local StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts")
 local ReplicatedStorage = RequireService(game:GetService("ReplicatedStorage"))
-local NETWORK = ReplicatedStorage:WaitForChild("_NETWORK")
 local ReplicatedFirst = RequireService(game:GetService("ReplicatedFirst"))
 
 local function DestroyGrabLocalScript()
