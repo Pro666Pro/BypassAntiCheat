@@ -1,4 +1,4 @@
--- Now this script is not messy! :)
+-- Now this script is not messy! :) EDIT: fixed some things
 
 local RequireService = cloneref or function(clone) return clone end
 local BlockInstance = function(ez) ez.Name = "BlockedInstance_"..math.random(0,500000).."" ez.Parent = RequireService(game:GetService("LogService")) ez:Destroy() end
